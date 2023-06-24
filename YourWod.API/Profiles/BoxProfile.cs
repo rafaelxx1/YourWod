@@ -11,7 +11,9 @@ namespace YourWod.API.Profiles
 		{
 			CreateMap<CreateBoxDto, BoxModel>();
 			CreateMap<UpdateBoxDto, BoxModel>();
-			CreateMap<BoxModel, ReadBoxDto>();
+			CreateMap<BoxModel, ReadBoxDto>().ForMember(boxDto => boxDto.Athletes, opt => opt.MapFrom(box => box.Athlete));
+
+			//.ForMember(boxDto => boxDto.Athletes, opt => opt.MapFrom(box => box.Athlete));
 		}
 	}
 }

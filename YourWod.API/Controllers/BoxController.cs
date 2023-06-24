@@ -9,7 +9,7 @@ namespace YourWod.API.Controllers;
 
 
 [ApiController]
-[Route("/controller")]
+[Route("[controller]")]
 public class BoxController : ControllerBase
 {
 	private YourWodContext _context;
@@ -24,7 +24,7 @@ public class BoxController : ControllerBase
 	[HttpGet]
 	public IEnumerable<ReadBoxDto> GetBox()
 	{
-		return _mapper.Map<List<ReadBoxDto>>(_context.Boxs);
+		return _mapper.Map<List<ReadBoxDto>>(_context.Boxs.ToList());
 	}
 
 	[HttpGet("{id}")]
