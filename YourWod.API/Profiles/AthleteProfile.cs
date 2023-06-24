@@ -12,7 +12,8 @@ public class AthleteProfile : Profile
 		CreateMap<CreateAthleteDto, AthleteModel>();
 		CreateMap<UpdateAthleteDto, AthleteModel>();
 		//CreateMap<AthleteModel, UpdateAthleteDto>();
-		CreateMap<AthleteModel, ReadAthleteDto>().ForMember(athleteDto => athleteDto.Address, opt => opt.MapFrom(athlete => athlete.Address));
+		CreateMap<AthleteModel, ReadAthleteDto>().ForMember(athleteDto => athleteDto.Address, opt => opt.MapFrom(athlete => athlete.Address))
+			.ForMember(athleteDto => athleteDto.Box, opt => opt.MapFrom(athlete => athlete.Box));
 	}
 
 }

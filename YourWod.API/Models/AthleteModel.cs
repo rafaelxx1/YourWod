@@ -21,5 +21,11 @@ public class AthleteModel
 
 	public int AddressId { get; set; }
 	public virtual AddressModel Address { get; set; }
+
+
+	public int BoxId { get; set; }
+	public virtual BoxModel Box { get; set; }
+
+
 }
 

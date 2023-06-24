@@ -11,8 +11,8 @@ using YourWod.API.Data;
 namespace YourWod.API.Migrations
 {
     [DbContext(typeof(YourWodContext))]
-    [Migration("20230623033258_CreateTables")]
-    partial class CreateTables
+    [Migration("20230624042528_CreatingBoxAthlete")]
+    partial class CreatingBoxAthlete
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,6 +63,9 @@ namespace YourWod.API.Migrations
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
+                    b.Property<int>("BoxId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
 
@@ -77,7 +80,31 @@ namespace YourWod.API.Migrations
                     b.HasIndex("AddressId")
                         .IsUnique();
 
+                    b.HasIndex("BoxId");
+
                     b.ToTable("Athletes");
+                });
+
+            modelBuilder.Entity("YourWod.API.Models.BoxModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Boxs");
                 });
 
             modelBuilder.Entity("YourWod.API.Models.WodModel", b =>
@@ -111,13 +138,26 @@ namespace YourWod.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("YourWod.API.Models.BoxModel", "Box")
+                        .WithMany("Athlete")
+                        .HasForeignKey("BoxId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Address");
+
+                    b.Navigation("Box");
                 });
 
             modelBuilder.Entity("YourWod.API.Models.AddressModel", b =>
                 {
                     b.Navigation("Athlete")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("YourWod.API.Models.BoxModel", b =>
+                {
+                    b.Navigation("Athlete");
                 });
 #pragma warning restore 612, 618
         }

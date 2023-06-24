@@ -11,5 +11,6 @@ public class ReadAthleteDto
     public ActiveStatus Active_yn { get; set; }
     public DateTime Date { get; set; } = DateTime.Now;
     public ReadAddressDto Address { get; set; }
+    public ReadBoxDto Box { get; set; }
 }
 

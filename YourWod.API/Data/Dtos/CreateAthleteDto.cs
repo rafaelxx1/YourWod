@@ -15,5 +15,6 @@ public class CreateAthleteDto
     public DateTime date { get; set; }
     public ActiveStatus active_yn { get; set; }
     public int AddressId { get; set; }
+    public int BoxId { get; set; }
 }
 
