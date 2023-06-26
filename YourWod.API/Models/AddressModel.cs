@@ -11,6 +11,6 @@ public class AddressModel
 	public string Rua { get; set; }
 	public string Estado { get; set; }
 	public int Numero { get; set; }
-	public virtual AthleteModel Athlete { get; set; }
+
 }
 

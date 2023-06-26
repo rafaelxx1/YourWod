@@ -11,8 +11,8 @@ using YourWod.API.Data;
 namespace YourWod.API.Migrations
 {
     [DbContext(typeof(YourWodContext))]
-    [Migration("20230624042528_CreatingBoxAthlete")]
-    partial class CreatingBoxAthlete
+    [Migration("20230625212239_add n:n 1:n 1:1")]
+    partial class addnn1n11
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,25 +60,31 @@ namespace YourWod.API.Migrations
                     b.Property<int>("Active_yn")
                         .HasColumnType("int");
 
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
                     b.Property<int>("BoxId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<string>("Cidade")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("Date_account")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Estado")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateOnly?>("born_date")
+                        .HasColumnType("date");
+
                     b.Property<string>("password")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AddressId")
-                        .IsUnique();
 
                     b.HasIndex("BoxId");
 
@@ -95,8 +101,14 @@ namespace YourWod.API.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("Data")
+                    b.Property<string>("Cidade")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("Data_cadastro")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -107,14 +119,32 @@ namespace YourWod.API.Migrations
                     b.ToTable("Boxs");
                 });
 
+            modelBuilder.Entity("YourWod.API.Models.WodAndAthleteModel", b =>
+                {
+                    b.Property<int>("AthleteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WodId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AthleteId", "WodId");
+
+                    b.HasIndex("WodId");
+
+                    b.ToTable("WodAthletes");
+                });
+
             modelBuilder.Entity("YourWod.API.Models.WodModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date_wod")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("BoxId")
+                        .HasColumnType("int");
+
+                    b.Property<DateOnly>("Date_wod")
+                        .HasColumnType("date");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
@@ -122,42 +152,72 @@ namespace YourWod.API.Migrations
                     b.Property<int>("Score_wod")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Time_wod")
-                        .HasColumnType("datetime(6)");
+                    b.Property<TimeOnly>("Time_wod")
+                        .HasColumnType("time(6)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BoxId");
 
                     b.ToTable("Wods");
                 });
 
             modelBuilder.Entity("YourWod.API.Models.AthleteModel", b =>
                 {
-                    b.HasOne("YourWod.API.Models.AddressModel", "Address")
-                        .WithOne("Athlete")
-                        .HasForeignKey("YourWod.API.Models.AthleteModel", "AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("YourWod.API.Models.BoxModel", "Box")
                         .WithMany("Athlete")
                         .HasForeignKey("BoxId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Address");
+                    b.Navigation("Box");
+                });
+
+            modelBuilder.Entity("YourWod.API.Models.WodAndAthleteModel", b =>
+                {
+                    b.HasOne("YourWod.API.Models.AthleteModel", "Athlete")
+                        .WithMany("WodAthletes")
+                        .HasForeignKey("AthleteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YourWod.API.Models.WodModel", "Wod")
+                        .WithMany("WodAthletes")
+                        .HasForeignKey("WodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Athlete");
+
+                    b.Navigation("Wod");
+                });
+
+            modelBuilder.Entity("YourWod.API.Models.WodModel", b =>
+                {
+                    b.HasOne("YourWod.API.Models.BoxModel", "Box")
+                        .WithMany("Wod")
+                        .HasForeignKey("BoxId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Box");
                 });
 
-            modelBuilder.Entity("YourWod.API.Models.AddressModel", b =>
+            modelBuilder.Entity("YourWod.API.Models.AthleteModel", b =>
                 {
-                    b.Navigation("Athlete")
-                        .IsRequired();
+                    b.Navigation("WodAthletes");
                 });
 
             modelBuilder.Entity("YourWod.API.Models.BoxModel", b =>
                 {
                     b.Navigation("Athlete");
+
+                    b.Navigation("Wod");
+                });
+
+            modelBuilder.Entity("YourWod.API.Models.WodModel", b =>
+                {
+                    b.Navigation("WodAthletes");
                 });
 #pragma warning restore 612, 618
         }

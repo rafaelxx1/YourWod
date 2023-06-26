@@ -10,9 +10,12 @@ public class UpdateAthleteDto
 	{
 	}
 
-    public string? email { get; set; }
+    public string? Name { get; set; }
+    public string? Email { get; set; }
     public string? password { get; set; }
-    public DateTime date { get; set; }
-    public ActiveStatus active_yn { get; set; }
+    public string? Cidade { get; set; }
+    public string? Estado { get; set; }
+    public DateOnly? born_date { get; set; }
+    public ActiveStatus Active_yn { get; set; }
 }
 

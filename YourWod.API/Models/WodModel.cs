@@ -8,10 +8,15 @@ public class WodModel
 	[Key]
 	[Required]
 	public int Id { get; set; }
-	public DateTime Date_wod { get; set; }
+	public DateOnly Date_wod { get; set; }
 	public string? Description { get; set; }
-	public DateTime Time_wod { get; set; }
+	public TimeOnly Time_wod { get; set; }
 	public int Score_wod { get; set; }
+
+	public int BoxId { get; set; }
+	public virtual BoxModel? Box { get; set; }
+
+	public virtual ICollection<WodAndAthleteModel>? WodAthletes { get; set; }
 	//public int AddressId { get; set; }
 	//public virtual AddressModel? Address { get; set; }
 

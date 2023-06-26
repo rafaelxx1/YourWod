@@ -12,7 +12,8 @@ public class WodProfile : Profile
         CreateMap<UpdateWodDto, WodModel>();
         CreateMap<CreateWodDto, WodModel>();
         //CreateMap<WodModel, UpdateWodDto>();
-        CreateMap<WodModel, ReadWodDto>();
+        CreateMap<WodModel, ReadWodDto>().ForMember(wod => wod.Box, opt => opt.MapFrom(wod => wod.Box));
+        CreateMap<WodModel, ReadWodBoxDto>();
 
     }
     
