@@ -5,6 +5,10 @@ VisualStudioVersion = 25.0.1705.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourWod.API", "YourWod.API\YourWod.API.csproj", "{341BB67E-5273-4CDC-A44F-477FF2357ADA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Front", "Front", "{9A8BB064-97B2-4D65-8B04-ADD509F46A4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourWod-APP", "YourWod-APP\YourWod-APP.csproj", "{CD0075AF-0860-4DEA-BAA2-D7131025B0CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,10 @@ Global
 		{341BB67E-5273-4CDC-A44F-477FF2357ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{341BB67E-5273-4CDC-A44F-477FF2357ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{341BB67E-5273-4CDC-A44F-477FF2357ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD0075AF-0860-4DEA-BAA2-D7131025B0CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD0075AF-0860-4DEA-BAA2-D7131025B0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD0075AF-0860-4DEA-BAA2-D7131025B0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD0075AF-0860-4DEA-BAA2-D7131025B0CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

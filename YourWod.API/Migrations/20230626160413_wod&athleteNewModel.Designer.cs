@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YourWod.API.Data;
 
@@ -10,9 +11,11 @@ using YourWod.API.Data;
 namespace YourWod.API.Migrations
 {
     [DbContext(typeof(YourWodContext))]
-    partial class YourWodContextModelSnapshot : ModelSnapshot
+    [Migration("20230626160413_wod&athleteNewModel")]
+    partial class wodathleteNewModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
