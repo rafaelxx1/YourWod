@@ -32,5 +32,6 @@ public class YourWodContext : DbContext
     public DbSet<AddressModel> Address { get; set; }
     public DbSet<BoxModel> Boxs { get; set; }
 	public DbSet<WodAndAthleteModel> WodAthletes { get; set; }
+	public DbSet<PrModel> Prs {get; set;}
 }
 

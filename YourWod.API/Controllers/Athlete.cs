@@ -1,8 +1,6 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using YourWod.API.Data;
 using YourWod.API.Data.Dtos;
 using YourWod.API.Models;

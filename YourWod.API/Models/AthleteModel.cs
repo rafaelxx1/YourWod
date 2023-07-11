@@ -24,9 +24,11 @@ public class AthleteModel
 	public ActiveStatus Active_yn { get; set; }
 
 	public int BoxId { get; set; }
-	public virtual BoxModel Box { get; set; }
+	public virtual BoxModel? Box { get; set; }
 
-	public virtual ICollection<WodAndAthleteModel> WodAthletes { get; set; }
+	public virtual ICollection<WodAndAthleteModel>? WodAthletes { get; set; }
+
+	public virtual ICollection<PrModel>? Prs {get; set;}
 
 
 }
