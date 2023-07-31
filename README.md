@@ -6,4 +6,5 @@
 
 <p>See below how the data works</p>
 
-![image](https://github.com/rafaelxx1/YourWod/assets/42784267/66c31473-9a07-4fa4-bd36-644fa37e31b3)
+![image](https://github.com/rafaelxx1/YourWod/assets/42784267/743fc812-2f75-4343-8ffb-9e1fcb19af39)
+
